@@ -1,18 +1,21 @@
 package com.revature.eval.java.core;
 
 import java.time.temporal.Temporal;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
 public class EvaluationService {
 
-	/**
+	/** SOLVED
 	 * 1. Without using the StringBuilder or StringBuffer class, write a method that
 	 * reverses a String. Example: reverse("example"); -> "elpmaxe"
 	 * 
 	 * @param string
 	 * @return
 	 */
+	
+	
 	public String reverse(String string) {
 		char[] reversed = new char[string.length()];
 		for (int i = reversed.length - 1, j=0; i >= 0; i--, j++) {
@@ -21,7 +24,7 @@ public class EvaluationService {
 		return new String(reversed);
 	}
 
-	/**
+	/** SOLVED
 	 * 2. Convert a phrase to its acronym. Techies love their TLA (Three Letter
 	 * Acronyms)! Help generate some jargon by writing a program that converts a
 	 * long name like Portable Network Graphics to its acronym (PNG).
@@ -31,10 +34,13 @@ public class EvaluationService {
 	 */
 	public String acronym(String phrase) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		
+		String acro = phrase.replaceAll("\\B.|\\P{L}", "").toUpperCase();
+		
+		return acro;
 	}
 
-	/**
+	/** SOLVED
 	 * 3. Determine if a triangle is equilateral, isosceles, or scalene. An
 	 * equilateral triangle has all three sides the same length. An isosceles
 	 * triangle has at least two sides the same length. (It is sometimes specified
@@ -85,22 +91,38 @@ public class EvaluationService {
 
 		public boolean isEquilateral() {
 			// TODO Write an implementation for this method declaration
-			return false;
+			if((sideOne == sideTwo)&&(sideTwo == sideThree)) {
+				
+			return true;
+			}
+			
+			else
+				return false;
 		}
 
 		public boolean isIsosceles() {
 			// TODO Write an implementation for this method declaration
-			return false;
+			if((sideOne == sideTwo) || (sideTwo == sideThree) || (sideOne == sideThree)) {
+				return true;
+				}
+			
+				else
+					return false;
 		}
 
 		public boolean isScalene() {
 			// TODO Write an implementation for this method declaration
-			return false;
+			if((sideOne != sideTwo)&&(sideTwo != sideThree)) {
+				return true;
+				}
+			
+				else
+					return false;
 		}
 
 	}
 
-	/**
+	/** SOLVED
 	 * 4. Given a word, compute the scrabble score for that word.
 	 * 
 	 * --Letter Values-- Letter Value A, E, I, O, U, L, N, R, S, T = 1; D, G = 2; B,
@@ -117,10 +139,61 @@ public class EvaluationService {
 	 */
 	public int getScrabbleScore(String string) {
 		// TODO Write an implementation for this method declaration
-		return 0;
+		int score = 0;
+		for (int i = 0; i < string.length(); i++) {
+			
+			char wordLetter = string.charAt(i);
+			
+			switch (wordLetter) {
+			
+			case 'a':
+			case 'e':
+			case 'i':
+			case 'l':
+			case 'n':
+			case 'o':
+			case 'O':
+			case 'r':
+			case 's':
+			case 't':
+			case 'u':
+				score += 1; break;
+				
+			case 'd':
+			case 'g':
+				score += 2; break;
+				
+			case 'b':
+			case 'B':
+			case 'c':
+			case 'm':
+			case 'p':
+				score += 3; break;
+				
+			case 'f':
+			case 'h':
+			case 'v':
+			case 'w':
+			case 'y':
+				score += 4; break;
+			
+			case 'k':
+				score += 5; break;
+				
+			case 'j':
+			case 'x':
+				score += 8; break;
+				
+			case 'q':
+			case 'z':
+				score += 10; break;
+			default: break;
+			}
+		}
+		return score;
 	}
 
-	/**
+	/** SOLVED
 	 * 5. Clean up user-entered phone numbers so that they can be sent SMS messages.
 	 * 
 	 * The North American Numbering Plan (NANP) is a telephone numbering system used
@@ -153,7 +226,43 @@ public class EvaluationService {
 	 */
 	public String cleanPhoneNumber(String string) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		
+		String result = "";
+		
+		boolean checkCountry = true;
+		
+		int count = 0;
+		
+		for (int i = 0; i < string.length(); i++) {
+			
+			if (Character.isDigit(string.charAt(i))) {
+				
+				if (checkCountry) {
+					
+					if (string.charAt(i) != '1') {
+						
+						result += string.charAt(i);
+						
+						count++;
+						
+						checkCountry = false;
+					}
+				}
+				
+				else {
+					result += string.charAt(i);
+					count++;
+				}
+			}
+		}
+		
+		if (count != 10 ) {
+			
+			throw new IllegalArgumentException();
+			
+		}
+		
+		return result;
 	}
 
 	/**
@@ -210,6 +319,9 @@ public class EvaluationService {
 
 		public int indexOf(T t) {
 			// TODO Write an implementation for this method declaration
+			
+			
+			
 			return 0;
 		}
 
@@ -228,7 +340,7 @@ public class EvaluationService {
 
 	}
 
-	/**
+	/** SOLVED
 	 * 8. Implement a program that translates from English to Pig Latin.
 	 * 
 	 * Pig Latin is a made-up children's language that's intended to be confusing.
@@ -245,12 +357,35 @@ public class EvaluationService {
 	 * @param string
 	 * @return
 	 */
+	
+	static boolean isVowel(char v) { 
+		
+	    return (v == 'A' || v == 'E' || v == 'I' || v == 'O' || v == 'U' || 
+	            v == 'a' || v == 'e' || v == 'i' || v == 'o' || v == 'u'); 
+	} 
+	
 	public String toPigLatin(String string) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		
+		int length = string.length();
+		
+		int index = 0;
+		
+		for (int i = 0; i < length; i++) {
+			
+	        if (isVowel(string.charAt(i))) { 
+	        
+	        	index = i; 
+	        	
+	        	break; 
+	    }
+	        
+	    }
+				
+		return string.substring(index) + string.substring(0, index) + "ay";
 	}
 
-	/**
+	/** SOLVED
 	 * 9. An Armstrong number is a number that is the sum of its own digits each
 	 * raised to the power of the number of digits.
 	 * 
@@ -267,7 +402,31 @@ public class EvaluationService {
 	 */
 	public boolean isArmstrongNumber(int input) {
 		// TODO Write an implementation for this method declaration
-		return false;
+		
+		int number, temp, total = 0;
+
+        number = input;
+                  
+        while (number != 0)
+        {
+            temp = number % 10;
+            
+            total = total + temp*temp*temp;
+            
+            number /= 10;
+        }
+        
+        if ((input < 10) || (input > 1000)) {
+        	return true;
+        }
+
+        if(total == input)
+        	
+            return true;
+        
+        else
+        	
+        	return false;
 	}
 
 	/**
@@ -326,7 +485,7 @@ public class EvaluationService {
 
 	}
 
-	/**
+	/** SOLVED
 	 * 12. Given a number n, determine what the nth prime is.
 	 * 
 	 * By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see
@@ -340,7 +499,39 @@ public class EvaluationService {
 	 */
 	public int calculateNthPrime(int i) {
 		// TODO Write an implementation for this method declaration
-		return 0;
+		
+				
+	    int count, n, a;
+	    
+	    n = 1;
+	    
+	    count = 0;
+	 
+	    while (count < i) {
+	    	
+	      n = n + 1;
+	      
+	      for (a = 2; a <= n; a++) {
+	    	  
+	        if (n % a == 0) {
+	        	
+	          break;
+	        
+	        }
+	        
+	      }
+	      
+	      if ( a == n){
+	    	  
+	    	  count = count+1;
+	      }
+	      
+	    }
+	    
+	    if (i == 0)
+	    	throw new IllegalArgumentException("Can't be number 0");
+	    else
+	    	return n;
 	}
 
 	/**
@@ -419,7 +610,7 @@ public class EvaluationService {
 		return false;
 	}
 
-	/**
+	/** SOLVED
 	 * 16. Determine if a sentence is a pangram. A pangram (Greek: παν γράμμα, pan
 	 * gramma, "every letter") is a sentence using every letter of the alphabet at
 	 * least once. The best known English pangram is:
@@ -434,7 +625,46 @@ public class EvaluationService {
 	 */
 	public boolean isPangram(String string) {
 		// TODO Write an implementation for this method declaration
-		return false;
+		
+		boolean[] alphabetList = new boolean[26];
+		
+		int index = 0;
+		
+	    int pangram = 1;
+	    
+	    for (int i = 0; i < string.length(); i++) {
+	    	if ( string.charAt(i) >= 'A' && string.charAt(i) <= 'Z') {
+	    		
+	    		index = string.charAt(i) - 'A';
+	    		
+	    		}
+	    	
+	    	else if( string.charAt(i) >= 'a' && string.charAt(i) <= 'z') {
+	    		
+	    		index = string.charAt(i) - 'a';
+	    		
+	    		}
+	    	
+	    	alphabetList[index] = true;
+	    	
+	    	}
+	    
+	   for (int i = 0; i <= 25; i++) {
+		   
+		   if (alphabetList[i] == false)
+			   
+			   pangram = 0;
+		   
+		   }
+	   
+	   
+	   if (pangram == 1)
+		   
+		   return true;
+	   
+	   else
+		   
+		   return false;
 	}
 
 	/**

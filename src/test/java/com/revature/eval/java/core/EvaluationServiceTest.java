@@ -29,27 +29,27 @@ public class EvaluationServiceTest {
 	/*******************************************************************
 	 * Question 1
 	 ******************************************************************/
-	@Test
+	@Test///////////SOLVED///////////
 	public void testAnEmptyString() {
 		assertEquals("", evaluationService.reverse(""));
 	}
 
-	@Test
+	@Test//////////////////SOLVED//////////
 	public void testAWord() {
 		assertEquals("tobor", evaluationService.reverse("robot"));
 	}
 
-	@Test
+	@Test//////////SOLVED///////////
 	public void testACapitalizedWord() {
 		assertEquals("nemaR", evaluationService.reverse("Ramen"));
 	}
 
-	@Test
+	@Test////////////////SOLVED//////////
 	public void testASentenceWithPunctuation() {
 		assertEquals("!yrgnuh m'I", evaluationService.reverse("I'm hungry!"));
 	}
 
-	@Test
+	@Test/////////////SOLVED////////////
 	public void testAPalindrome() {
 		assertEquals("racecar", evaluationService.reverse("racecar"));
 	}
@@ -57,28 +57,28 @@ public class EvaluationServiceTest {
 	/*******************************************************************
 	 * Question 2
 	 ******************************************************************/
-	@Test
+	@Test/////////SOLVED///////////
 	public void basic() {
 		final String phrase = "Portable Network Graphics";
 		final String expected = "PNG";
 		assertEquals(expected, evaluationService.acronym(phrase));
 	}
 
-	@Test
+	@Test/////////SOLVED///////////
 	public void punctuation() {
 		final String phrase = "First In, First Out";
 		final String expected = "FIFO";
 		assertEquals(expected, evaluationService.acronym(phrase));
 	}
 
-	@Test
+	@Test/////////SOLVED///////////
 	public void NonAcronymAllCapsWord() {
 		final String phrase = "GNU Image Manipulation Program";
 		final String expected = "GIMP";
 		assertEquals(expected, evaluationService.acronym(phrase));
 	}
 
-	@Test
+	@Test/////////SOLVED///////////
 	public void punctuationWithoutWhitespace() {
 		final String phrase = "Complementary metal-oxide semiconductor";
 		final String expected = "CMOS";
@@ -89,37 +89,37 @@ public class EvaluationServiceTest {
 	 * Question 3
 	 ******************************************************************/
 
-	@Test
+	@Test//////////////////SOLVED///////////////
 	public void trianglesWithNoEqualSidesAreNotEquilateral() {
 		EvaluationService.Triangle triangle = new EvaluationService.Triangle(5, 4, 6);
 		assertFalse(triangle.isEquilateral());
 	}
 
-	@Test
+	@Test//////////SOLVED///////
 	public void verySmallTrianglesCanBeEquilateral() {
 		EvaluationService.Triangle triangle = new EvaluationService.Triangle(0.5, 0.5, 0.5);
 		assertTrue(triangle.isEquilateral());
 	}
 
-	@Test
+	@Test/////////////SOLVED/////////////
 	public void isoscelesTrianglesMustHaveAtLeastTwoEqualSides() {
 		EvaluationService.Triangle triangle = new EvaluationService.Triangle(2, 3, 4);
 		assertFalse(triangle.isIsosceles());
 	}
 
-	@Test
+	@Test//////////SOLVED//////////
 	public void verySmallTrianglesCanBeIsosceles() {
 		EvaluationService.Triangle triangle = new EvaluationService.Triangle(0.5, 0.4, 0.5);
 		assertTrue(triangle.isIsosceles());
 	}
 
-	@Test
+	@Test/////////////SOLVED//////////////
 	public void trianglesWithAllSidesEqualAreNotScalene() {
 		EvaluationService.Triangle triangle = new EvaluationService.Triangle(4, 4, 4);
 		assertFalse(triangle.isScalene());
 	}
 
-	@Test
+	@Test///////////SOLVED////////
 	public void verySmallTrianglesCanBeScalene() {
 		EvaluationService.Triangle triangle = new EvaluationService.Triangle(0.5, 0.4, 0.6);
 		assertTrue(triangle.isScalene());
@@ -128,27 +128,27 @@ public class EvaluationServiceTest {
 	/*******************************************************************
 	 * Question 4
 	 ******************************************************************/
-	@Test
+	@Test//////////SOLVED/////////
 	public void testAValuableLetter() {
 		assertEquals(4, evaluationService.getScrabbleScore("f"));
 	}
 
-	@Test
+	@Test////////////SOLVED////////
 	public void testAShortValuableWord() {
 		assertEquals(12, evaluationService.getScrabbleScore("zoo"));
 	}
 
-	@Test
+	@Test//////////SOLVED/////////
 	public void testAMediumWord() {
 		assertEquals(6, evaluationService.getScrabbleScore("street"));
 	}
 
-	@Test
+	@Test///////////SOLVED///////////
 	public void testAMediumValuableWord() {
 		assertEquals(22, evaluationService.getScrabbleScore("quirky"));
 	}
 
-	@Test
+	@Test////////////SOLVED////////
 	public void testALongMixCaseWord() {
 		assertEquals(41, evaluationService.getScrabbleScore("OxyphenButazone"));
 	}
@@ -156,34 +156,34 @@ public class EvaluationServiceTest {
 	/*******************************************************************
 	 * Question 5
 	 ******************************************************************/
-	@Test
+	@Test/////////SOLVED///////
 	public void cleansTheNumber() {
 		final String expectedNumber = "2234567890";
 		final String actualNumber = evaluationService.cleanPhoneNumber("(223) 456-7890");
 		assertEquals(expectedNumber, actualNumber);
 	}
 
-	@Test
+	@Test//////////SOLVED//////////
 	public void cleansNumbersWithDots() {
 		final String expectedNumber = "2234567890";
 		final String actualNumber = evaluationService.cleanPhoneNumber("223.456.7890");
 		assertEquals(expectedNumber, actualNumber);
 	}
 
-	@Test
+	@Test//////////SOLVED//////////
 	public void cleansNumbersWithMultipleSpaces() {
 		final String expectedNumber = "2234567890";
 		final String actualNumber = evaluationService.cleanPhoneNumber("223 456   7890   ");
 		assertEquals(expectedNumber, actualNumber);
 	}
 
-	@Test
+	@Test//////////SOLVED//////////
 	public void invalidWhenMoreThan11Digits() {
 		expectedException.expect(IllegalArgumentException.class);
 		evaluationService.cleanPhoneNumber("321234567890");
 	}
 
-	@Test
+	@Test//////////SOLVED//////////
 	public void invalidWithNonNumeric() {
 		expectedException.expect(IllegalArgumentException.class);
 		evaluationService.cleanPhoneNumber("123-abc-7890");
@@ -261,7 +261,7 @@ public class EvaluationServiceTest {
 		assertEquals(3, search.indexOf("6"));
 	}
 
-	@Test
+	@Test//////////////SOLVED///////////
 	public void findsAValueAtTheBeginningOfAnArray() {
 		List<Integer> sortedList = Collections.unmodifiableList(Arrays.asList(1, 3, 4, 6, 8, 9, 11));
 
@@ -302,22 +302,22 @@ public class EvaluationServiceTest {
 	/*******************************************************************
 	 * Question 8
 	 ******************************************************************/
-	@Test
+	@Test//////////SOLVED//////////
 	public void testWordBeginningWithA() {
 		assertEquals("appleay", evaluationService.toPigLatin("apple"));
 	}
 
-	@Test
+	@Test//////////SOLVED//////////
 	public void testThTreatedLikeAConsonantAtTheBeginningOfAWord() {
 		assertEquals("erapythay", evaluationService.toPigLatin("therapy"));
 	}
 
-	@Test
+	@Test//////////SOLVED//////////
 	public void testSchTreatedLikeAConsonantAtTheBeginningOfAWord() {
 		assertEquals("oolschay", evaluationService.toPigLatin("school"));
 	}
 
-	@Test
+	@Test//////////SOLVED//////////
 	public void testYTreatedLikeAConsonantAtTheBeginningOfAWord() {
 		assertEquals("ellowyay", evaluationService.toPigLatin("yellow"));
 	}
@@ -330,35 +330,35 @@ public class EvaluationServiceTest {
 	/*******************************************************************
 	 * Question 9
 	 ******************************************************************/
-	@Test
+	@Test /////////////SOLVED/////////
 	public void singleDigitsAreArmstrongNumbers() {
 		int input = 5;
 
 		assertTrue(evaluationService.isArmstrongNumber(input));
 	}
 
-	@Test
+	@Test////////////////SOLVED/////////////////
 	public void noTwoDigitArmstrongNumbers() {
 		int input = 10;
 
 		assertFalse(evaluationService.isArmstrongNumber(input));
 	}
 
-	@Test
+	@Test///////////////SOLVED///////////////////
 	public void threeDigitNumberIsArmstrongNumber() {
 		int input = 153;
 
 		assertTrue(evaluationService.isArmstrongNumber(input));
 	}
 
-	@Test
+	@Test///////SOLVED/////////
 	public void threeDigitNumberIsNotArmstrongNumber() {
 		int input = 100;
 
 		assertFalse(evaluationService.isArmstrongNumber(input));
 	}
 
-	@Test
+	@Test////////////SOLVED////////
 	public void fourDigitNumberIsArmstrongNumber() {
 		int input = 9474;
 
@@ -432,27 +432,27 @@ public class EvaluationServiceTest {
 	/*******************************************************************
 	 * Question 12
 	 ******************************************************************/
-	@Test
+	@Test//////////SOLVED///////
 	public void testFirstPrime() {
 		assertThat(evaluationService.calculateNthPrime(1), is(2));
 	}
 
-	@Test
+	@Test//////////SOLVED///////////
 	public void testSecondPrime() {
 		assertThat(evaluationService.calculateNthPrime(2), is(3));
 	}
 
-	@Test
+	@Test////////////SOLVED///////////
 	public void testSixthPrime() {
 		assertThat(evaluationService.calculateNthPrime(6), is(13));
 	}
 
-	@Test
+	@Test///////////SOLVED////////////
 	public void testBigPrime() {
 		assertThat(evaluationService.calculateNthPrime(10001), is(104743));
 	}
 
-	@Test
+	@Test///////////SOLVED//////////
 	public void testUndefinedPrime() {
 		expectedException.expect(IllegalArgumentException.class);
 		evaluationService.calculateNthPrime(0);
@@ -526,7 +526,7 @@ public class EvaluationServiceTest {
 		assertTrue(evaluationService.isValidIsbn("3-598-21508-8"));
 	}
 
-	@Test
+	@Test//////////SOLVED///////////
 	public void invalidIsbnCheckDigit() {
 		assertFalse(evaluationService.isValidIsbn("3-598-21508-9"));
 	}
@@ -536,12 +536,12 @@ public class EvaluationServiceTest {
 		assertTrue(evaluationService.isValidIsbn("3-598-21507-X"));
 	}
 
-	@Test
+	@Test//////////////SOLVED///////////
 	public void checkDigitIsACharacterOtherThanX() {
 		assertFalse(evaluationService.isValidIsbn("3-598-21507-A"));
 	}
 
-	@Test
+	@Test //////////////SOLVED///////////////
 	public void invalidCharacterInIsbn() {
 		assertFalse(evaluationService.isValidIsbn("3-598-2K507-0"));
 	}
@@ -549,27 +549,27 @@ public class EvaluationServiceTest {
 	/*******************************************************************
 	 * Question 16
 	 ******************************************************************/
-	@Test
+	@Test///////////SOLVED///////////
 	public void emptySentenceIsNotPangram() {
 		assertFalse(evaluationService.isPangram(""));
 	}
 
-	@Test
+	@Test///////SOLVED/////////
 	public void recognizesPerfectLowerCasePangram() {
 		assertTrue(evaluationService.isPangram("abcdefghijklmnopqrstuvwxyz"));
 	}
 
-	@Test
+	@Test///////////SOLVED/////////
 	public void pangramWithOnlyLowerCaseLettersIsRecognizedAsPangram() {
 		assertTrue(evaluationService.isPangram("the quick brown fox jumps over the lazy dog"));
 	}
 
-	@Test
+	@Test/////////////////SOLVED////////////
 	public void phraseMissingCharacterXIsNotPangram() {
 		assertFalse(evaluationService.isPangram("a quick movement of the enemy will jeopardize five gunboats"));
 	}
 
-	@Test
+	@Test/////////////////SOLVED//////////
 	public void phraseMissingAnotherCharacterIsNotPangram() {
 		assertFalse(evaluationService.isPangram("five boxing wizards jump quickly at it"));
 	}
@@ -663,22 +663,22 @@ public class EvaluationServiceTest {
 		assertTrue(evaluationService.isLuhnValid("046 454 286"));
 	}
 
-	@Test
+	@Test///////////SOLVED////////////
 	public void testThatAnInvalidCanadianSocialInsuranceNumberIsIdentifiedAsInvalid() {
 		assertFalse(evaluationService.isLuhnValid("046 454 287"));
 	}
 
-	@Test
+	@Test/////////////SOLVED///////////
 	public void testThatAnInvalidCreditCardIsIdentifiedAsInvalid() {
 		assertFalse(evaluationService.isLuhnValid("8273 1232 7352 0569"));
 	}
 
-	@Test
+	@Test////////////SOLVED/////////////
 	public void testThatAddingANonDigitCharacterToAValidStringInvalidatesTheString() {
 		assertFalse(evaluationService.isLuhnValid("046a 454 286"));
 	}
 
-	@Test
+	@Test////////////SOLVED///////////
 	public void testThatStringContainingPunctuationIsInvalid() {
 		assertFalse(evaluationService.isLuhnValid("055-444-285"));
 	}
