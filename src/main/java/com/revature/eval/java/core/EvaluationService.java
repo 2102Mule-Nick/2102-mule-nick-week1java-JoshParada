@@ -1,9 +1,11 @@
 package com.revature.eval.java.core;
 
 import java.time.temporal.Temporal;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 public class EvaluationService {
 
@@ -276,6 +278,7 @@ public class EvaluationService {
 	 */
 	public Map<String, Integer> wordCount(String string) {
 		// TODO Write an implementation for this method declaration
+		
 		return null;
 	}
 
@@ -441,7 +444,25 @@ public class EvaluationService {
 	 */
 	public List<Long> calculatePrimeFactorsOf(long l) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		
+		List<Long> primeFactors = new ArrayList<Long>();
+		
+		while (l%2 == 0) {
+			primeFactors.add(2L);
+			l/=2;
+		}
+		
+		for (int i = 2; i <= l; i++) {
+			
+			while(l%i == 0) {
+				
+				primeFactors.add(Long.valueOf(i));
+				l/=i;
+			}
+		}
+		
+		
+		return primeFactors;
 	}
 
 	/**
@@ -480,7 +501,26 @@ public class EvaluationService {
 
 		public String rotate(String string) {
 			// TODO Write an implementation for this method declaration
-			return null;
+			
+			String cipherString = "";
+			char rotatedChar;
+			
+			for (int x = 0; x < string.length(); x++) {
+				
+				rotatedChar = string.charAt(x);
+				
+				if (Character.isLetter(string.charAt(x))) {
+					
+					rotatedChar = (char) (string.charAt(x) + key);
+					
+					if ((Character.isLowerCase(string.charAt(x))&&rotatedChar>'z')||(Character.isUpperCase(string.charAt(x))&&rotatedChar>'Z')) {
+						rotatedChar = (char) (string.charAt(x) - (26 - key));
+					}
+				}
+				cipherString += rotatedChar;
+			}
+			
+			return cipherString;
 		}
 
 	}
@@ -768,6 +808,42 @@ public class EvaluationService {
 	 */
 	public int solveWordProblem(String string) {
 		// TODO Write an implementation for this method declaration
+		
+		String[] words = string.substring(0, string.length() - 1).split("");
+		int[] numbers = new int[2];
+		int index = 0;
+		
+		for (String word : words) {
+			if (index < 2) {
+				if(word.charAt(0) == '-') {
+					Scanner scan = new Scanner(word.substring(1));
+					numbers[index] = -scan.nextInt();
+					index++;
+					scan.close();
+				}
+				else if (Character.isDigit(word.charAt(0))) {
+					Scanner scan = new Scanner(word);
+					numbers[index] = scan.nextInt();
+					index++;
+					scan.close();
+				}
+			}
+			else {
+				break;
+			}
+		}
+		
+		switch(words[3]) {
+			case "plus":
+				return numbers[0] + numbers[1];
+		case "minus":
+				return numbers[0] - numbers[1];
+		case "divided":
+				return numbers[0] / numbers[1];
+		case "multiplied":
+				return numbers[0] * numbers[1];
+		}
+		
 		return 0;
 	}
 

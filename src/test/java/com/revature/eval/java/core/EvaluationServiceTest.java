@@ -369,27 +369,27 @@ public class EvaluationServiceTest {
 	 * Question 10
 	 ******************************************************************/
 
-	@Test
+	@Test//////////SOLVED///////////
 	public void testPrimeNumber() {
 		assertEquals(Collections.singletonList(2L), evaluationService.calculatePrimeFactorsOf(2L));
 	}
 
-	@Test
+	@Test//////////SOLVED///////////
 	public void testSquareOfAPrime() {
 		assertEquals(Arrays.asList(3L, 3L), evaluationService.calculatePrimeFactorsOf(9L));
 	}
 
-	@Test
+	@Test//////////SOLVED///////////
 	public void testCubeOfAPrime() {
 		assertEquals(Arrays.asList(2L, 2L, 2L), evaluationService.calculatePrimeFactorsOf(8L));
 	}
 
-	@Test
+	@Test//////////SOLVED///////////
 	public void testProductOfPrimesAndNonPrimes() {
 		assertEquals(Arrays.asList(2L, 2L, 3L), evaluationService.calculatePrimeFactorsOf(12L));
 	}
 
-	@Test
+	@Test//////////SOLVED///////////
 	public void testProductOfPrimes() {
 		assertEquals(Arrays.asList(5L, 17L, 23L, 461L), evaluationService.calculatePrimeFactorsOf(901255L));
 	}
@@ -398,31 +398,31 @@ public class EvaluationServiceTest {
 	 * Question 11
 	 ******************************************************************/
 
-	@Test
+	@Test//////////SOLVED///////////
 	public void rotateSingleCharacterWithWrapAround() {
 		EvaluationService.RotationalCipher rotationalCipher = new EvaluationService.RotationalCipher(13);
 		assertEquals("a", rotationalCipher.rotate("n"));
 	}
 
-	@Test
+	@Test//////////SOLVED///////////
 	public void rotateCapitalLetters() {
 		EvaluationService.RotationalCipher rotationalCipher = new EvaluationService.RotationalCipher(5);
 		assertEquals("TRL", rotationalCipher.rotate("OMG"));
 	}
 
-	@Test
+	@Test//////////SOLVED///////////
 	public void rotateNumbers() {
 		EvaluationService.RotationalCipher rotationalCipher = new EvaluationService.RotationalCipher(4);
 		assertEquals("Xiwxmrk 1 2 3 xiwxmrk", rotationalCipher.rotate("Testing 1 2 3 testing"));
 	}
 
-	@Test
+	@Test//////////SOLVED///////////
 	public void rotatePunctuation() {
 		EvaluationService.RotationalCipher rotationalCipher = new EvaluationService.RotationalCipher(21);
 		assertEquals("Gzo'n zvo, Bmviyhv!", rotationalCipher.rotate("Let's eat, Grandma!"));
 	}
 
-	@Test
+	@Test//////////SOLVED///////////
 	public void rotateAllLetters() {
 		EvaluationService.RotationalCipher rotationalCipher = new EvaluationService.RotationalCipher(13);
 		assertEquals("The quick brown fox jumps over the lazy dog.",
